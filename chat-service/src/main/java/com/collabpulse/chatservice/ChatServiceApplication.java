@@ -1,12 +1,11 @@
-package com.collabpulse.userservice;
+package com.collabpulse.chatservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserServiceApplication {
-
+public class ChatServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(UserServiceApplication.class, args);
+        SpringApplication.run(ChatServiceApplication.class, args);
     }
 }

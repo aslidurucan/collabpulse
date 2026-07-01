@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # user-service için SQL veritabanımız
+  postgres:
+    image: postgres:16-alpine
+    container_name: collabpulse-postgres-new
+    environment:
+      POSTGRES_DB: collabpulse_user
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5499:5432" # Portu tamamen izole ettik, artık kimseyle çakışamaz
+    volumes:
+      - postgres_new_data:/var/lib/postgresql/data
+
+  # chat-service için NoSQL veritabanımız
+  mongo-db:
+    image: mongo:7.0
+    container_name: collabpulse-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  postgres_new_data:
+  mongo_data:
