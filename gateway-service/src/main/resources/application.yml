@@ -1,0 +1,20 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        # 1. Kullanıcı Servisi Yönlendirmesi
+        - id: user-service-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/users/**
+
+        # 2. Mesajlaşma/Chat Servisi Yönlendirmesi
+        - id: chat-service-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/chats/**, /ws-connect/**
