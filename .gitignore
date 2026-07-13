@@ -18,6 +18,9 @@ target/
 *.iml
 *.ipr
 
+# Nested module IDE folders (only the root .idea/ is shared)
+*/.idea/
+
 ### Eclipse ###
 .apt_generated
 .classpath
