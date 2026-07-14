@@ -1,5 +1,6 @@
 package com.collabpulse.userservice.service;
 
+import com.collabpulse.userservice.exception.UserNotFoundException;
 import com.collabpulse.userservice.model.User;
 import com.collabpulse.userservice.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -9,7 +10,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -29,6 +30,6 @@ public class UserService {
 
     public User getUserById(Long id){
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Kullanıcı bulunamadı! ID: " + id));
+                .orElseThrow(() -> new UserNotFoundException("Kullanıcı bulunamadı! ID: " + id));
     }
 }

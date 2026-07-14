@@ -1,8 +1,6 @@
 package com.collabpulse.userservice.model;
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
-
 @Entity
 @Table(name = "users")
 
