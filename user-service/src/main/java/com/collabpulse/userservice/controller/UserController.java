@@ -35,4 +35,10 @@ public class UserController {
         User user = userService.getUserById(id);
         return ResponseEntity.ok(user);
     }
+
+    @GetMapping("/{id}/validate")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String id) {
+        System.out.println("chat-service iç ağdan kullanıcı doğrulama isteği gönderdi. ID: " + id);
+        return ResponseEntity.ok(true);
+    }
 }
