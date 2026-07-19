@@ -18,3 +18,5 @@ spring:
           uri: http://localhost:8082
           predicates:
             - Path=/api/messages/**, /ws-connect/**
+  jwt:
+    secret: ${JWT_SECRET}

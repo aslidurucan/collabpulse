@@ -1,4 +1,5 @@
 package com.collabpulse.userservice.model;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +19,9 @@ public class User {
 
     @Column(nullable = false)
     private String role;
+
+    @Column(nullable = false)
+    private String password;
 
     public Long getId() {
         return id;
@@ -52,5 +56,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
