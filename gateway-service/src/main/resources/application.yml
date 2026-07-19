@@ -12,11 +12,15 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/api/users/**
+          filters:
+            - AuthenticationFilter
 
         # 2. Mesajlaşma/Chat Servisi Yönlendirmesi
         - id: chat-service-route
           uri: http://localhost:8082
           predicates:
             - Path=/api/messages/**, /ws-connect/**
+          filters:
+            - AuthenticationFilter
   jwt:
     secret: ${JWT_SECRET}
