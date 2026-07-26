@@ -31,7 +31,8 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
             ServerHttpRequest request = exchange.getRequest();
             String path = request.getURI().getPath();
 
-            boolean isPublicPath = path.equals("/api/users/login")
+            boolean isPublicPath = request.getMethod() == HttpMethod.OPTIONS
+                    || path.equals("/api/users/login")
                     || (path.equals("/api/users") && request.getMethod() == HttpMethod.POST);
             if (isPublicPath) {
                 return chain.filter(exchange);
