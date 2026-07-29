@@ -2,6 +2,7 @@ package com.collabpulse.chatservice.service;
 
 import com.collabpulse.chatservice.model.Message;
 import com.collabpulse.chatservice.repository.MessageRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -41,7 +42,7 @@ public class MessageService {
         return messageRepository.save(message);
     }
 
-    public List<Message> getChatHistory(Long senderId, Long receiverId) {
-        return messageRepository.findBySenderIdAndReceiverIdOrderByTimestampAsc(senderId, receiverId);
+    public List<Message> getChatHistory(Long myUserId, Long otherUserId) {
+        return messageRepository.findConversation(myUserId, otherUserId, Sort.by("timestamp").ascending());
     }
 }

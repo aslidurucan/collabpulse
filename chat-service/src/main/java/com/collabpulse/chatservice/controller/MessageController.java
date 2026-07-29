@@ -28,9 +28,9 @@ MessageController {
     }
     @GetMapping("/history")
     public ResponseEntity<List<Message>> getChatHistory(
-            @RequestParam Long senderId,
-            @RequestParam Long receiverId) {
-        List<Message> history = messageService.getChatHistory(senderId, receiverId);
+            @RequestHeader("X-User-Id") Long myUserId,
+            @RequestParam Long withUserId) {
+        List<Message> history = messageService.getChatHistory(myUserId, withUserId);
         return ResponseEntity.ok(history);
     }
 
